@@ -21,6 +21,7 @@ let rukeListeCap = 10;                             /*!!!!!!!!*/
 let rukeTimer;
 let happinessDifficulty = 10;
 let hungerDifficulty = 10;
+let speedDifficulty = 4000;
 
 
 //Frode's mesterverk
@@ -42,9 +43,9 @@ function startScreen() {
     <div class="startContainer">
     <div class="nameText">Name: </div>                                                    <!--!!!!!!!!!!!-->
         <input type="text" onchange="updateName(this.value)" placeholder="Frode.."/>        <!--!!!!!!!!!!!-->
-        <button class=${feedButton} onclick="chooseDifficulty('5', '5')">Easy Mode</button>
-        <button class=${feedButton} onclick="chooseDifficulty('10', '10')">Normal Mode</button>
-        <button class=${feedButton} onclick="chooseDifficulty('15', '15')">Hard Mode</button>
+        <button class=${feedButton} onclick="chooseDifficulty('5', '5', '6000')">Easy Mode</button>
+        <button class=${feedButton} onclick="chooseDifficulty('10', '10', '4000')">Normal Mode</button>
+        <button class=${feedButton} onclick="chooseDifficulty('15', '15', '2000')">Hard Mode</button>
         <button class=${feedButton} onclick=startGame()>Start Game</button>
     </div>
     `;
@@ -57,7 +58,7 @@ function updateName(goatUpdate) {
 
 function startGame() {
     rukeSpeed = 2000;
-    timer = setInterval(hungryAndSad, 4000);
+    timer = setInterval(hungryAndSad, speedDifficulty);
     setTimeout(leggeTilRuke, rukeSpeed);                    /*  !!!!!!!!!!!!  setTimeout* */  
     bgm.play();
     updateView();
@@ -159,8 +160,8 @@ function playButtonCooldown() {
 }
 
 function hungryAndSad() {
-    goatHappiness -= 10;
-    goatHunger -= 10;
+    goatHappiness -= happinessDifficulty;
+    goatHunger -= hungerDifficulty;
     updateView();
 }
 
@@ -178,12 +179,12 @@ function endGame() {
     if (goatHunger <= 0) {
         defeatText = ' sultet ihjel.';
         dead.play();                                            /***!!!!!!!!!!!!!!!!!* */
-        restartButton = '<button class="restartLayout" onclick="restartGame()">Restart</button>'
+        restartButton = '<button class="feedButton" onclick="restartGame()">Restart</button>'
     }
     else {
         goatHappiness = 0;                                        /***!!!!!!!!!!!!!!!!!* */
         defeatText = ' stakk av.'
-        restartButton = '<button class="restartLayout" onclick="restartGame()">Restart</button>'
+        restartButton = '<button class="feedButton" onclick="restartGame()">Restart</button>'
     }
 }
 
@@ -264,7 +265,8 @@ function fjernRuke(ruke) {
     updateView();
 }
 
-function chooseDifficulty(happiness, hunger){
+function chooseDifficulty(happiness, hunger, speed){
     happinessDifficulty = happiness;
     hungerDifficulty = hunger;
+    speedDifficulty = speed;
 }
