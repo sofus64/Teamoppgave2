@@ -9,7 +9,7 @@ let playButton = "playButton";
 let defeatText;
 let points = 0;
 let rukeCounter = 0;                              /*!!!!!!!!*/ 
-let rukeSpeed;                                    /*!!!!!!!!*/ 
+let rukeSpeed = 2000;                                    /*!!!!!!!!*/ 
 const bgm = new Audio('bgm.mp3');
 bgm.volume = 0.05;
 bgm.loop = true;
@@ -43,9 +43,9 @@ function startScreen() {
     <div class="startContainer">
     <div class="nameText">Name: </div>                                                    <!--!!!!!!!!!!!-->
         <input type="text" onchange="updateName(this.value)" placeholder="Frode.."/>        <!--!!!!!!!!!!!-->
-        <button class=${feedButton} onclick="chooseDifficulty('5', '5', '6000')">Easy Mode</button>
-        <button class=${feedButton} onclick="chooseDifficulty('10', '10', '4000')">Normal Mode</button>
-        <button class=${feedButton} onclick="chooseDifficulty('15', '15', '2000')">Hard Mode</button>
+        <button class=${feedButton} onclick="chooseDifficulty('5', '5', '6000', '3000')">Easy Mode</button>
+        <button class=${feedButton} onclick="chooseDifficulty('10', '10', '4000', '2000')">Normal Mode</button>
+        <button class=${feedButton} onclick="chooseDifficulty('15', '15', '2000', '1000')">Hard Mode</button>
         <button class=${feedButton} onclick=startGame()>Start Game</button>
     </div>
     `;
@@ -57,7 +57,6 @@ function updateName(goatUpdate) {
 }
 
 function startGame() {
-    rukeSpeed = 2000;
     timer = setInterval(hungryAndSad, speedDifficulty);
     setTimeout(leggeTilRuke, rukeSpeed);                    /*  !!!!!!!!!!!!  setTimeout* */  
     bgm.play();
@@ -265,8 +264,9 @@ function fjernRuke(ruke) {
     updateView();
 }
 
-function chooseDifficulty(happiness, hunger, speed){
+function chooseDifficulty(happiness, hunger, speed, rukefart){
     happinessDifficulty = happiness;
     hungerDifficulty = hunger;
     speedDifficulty = speed;
+    rukeSpeed = rukefart;
 }
