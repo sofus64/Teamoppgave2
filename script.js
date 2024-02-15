@@ -8,6 +8,8 @@ let feedButton = "feedButton";
 let playButton = "playButton";
 let defeatText;
 let points = 0;
+let rukeCounter = 0;                              /*!!!!!!!!*/ 
+let rukeSpeed;                                    /*!!!!!!!!*/ 
 const bgm = new Audio('bgm.mp3');
 bgm.volume = 0.05;
 bgm.loop = true;
@@ -15,7 +17,7 @@ let timer;
 let restartButton = '';
 let backgroundMusic = true;
 let rukeListe = [];
-const rukeListeCap = 5;
+let rukeListeCap = 10;                             /*!!!!!!!!*/
 let rukeTimer;
 let happinessDifficulty = 10;
 let hungerDifficulty = 10;
@@ -38,7 +40,8 @@ function startScreen() {
         <img src="img/8-28-goat.jpg"/>
     </div>
     <div class="startContainer">
-        <input type="text" onchange="updateName(this.value)"/>
+    <div class="nameText">Name: </div>                                                    <!--!!!!!!!!!!!-->
+        <input type="text" onchange="updateName(this.value)" placeholder="Frode.."/>        <!--!!!!!!!!!!!-->
         <button onclick=startGame()>Start Game</button>
         <button onclick="chooseDifficulty('5', '5')">Easy Mode</button>
         <button onclick="chooseDifficulty('10', '10')">Normal Mode</button>
@@ -53,8 +56,9 @@ function updateName(goatUpdate) {
 }
 
 function startGame() {
+    rukeSpeed = 2000;
     timer = setInterval(hungryAndSad, 4000);
-    rukeTimer = setInterval(leggeTilRuke, 2000);
+    setTimeout(leggeTilRuke, rukeSpeed);                    /*  !!!!!!!!!!!!  setTimeout* */  
     bgm.play();
     updateView();
 }
@@ -123,7 +127,7 @@ function feedGoat() {
     feedCooldown = true;
     feedButton = "feedButtonDisabled";
     setTimeout(feedButtonCooldown, (cooldown * 1000))
-    fed.play()
+    // fed.play()
     updateView();
 }
 
@@ -137,8 +141,8 @@ function playGoat() {
 
     playCooldown = true;
     playButton = "playButtonDisabled";
-    setTimeout(playButtonCooldown, (cooldown * 1000))
-    playing.play()
+    setTimeout(playButtonCooldown, (cooldown * 1000))                   
+    // playing.play()
     updateView();
 }
 
@@ -160,9 +164,9 @@ function hungryAndSad() {
     updateView();
 }
 
-function goatPet() {
-    blaeShort.play();
-}
+// function goatPet() {
+//     blaeShort.play();
+// }
 
 function endGame() {
     feedCooldown = true;
@@ -173,10 +177,11 @@ function endGame() {
 
     if (goatHunger <= 0) {
         defeatText = ' sultet ihjel.';
-
+        dead.play();                                            /***!!!!!!!!!!!!!!!!!* */
         restartButton = '<button class="restartLayout" onclick="restartGame()">Restart</button>'
     }
     else {
+        goatHappiness = 0;                                        /***!!!!!!!!!!!!!!!!!* */
         defeatText = ' stakk av.'
         restartButton = '<button class="restartLayout" onclick="restartGame()">Restart</button>'
     }
@@ -231,6 +236,7 @@ function leggeTilRuke() {
         endGame();
         updateView();
     }
+    setTimeout(leggeTilRuke, rukeSpeed);                         /*  !!!!!!!!!!!! */
     lageRuker();
     updateView();
 }
@@ -249,6 +255,11 @@ function lageRuker() {
 function fjernRuke(ruke) {
     rukeListe.splice(ruke, 1)
     points++;
+    rukeCounter++                                           /*!!!!!!!!*/
+    if (rukeCounter >= 4 && rukeSpeed >= 600){               /*!!!!!!!!*/           
+            rukeCounter = 0;                                 /*!!!!!!!!*/
+            rukeSpeed -= 100;
+    }
     lageRuker();
     updateView();
 }
