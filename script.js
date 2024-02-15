@@ -127,7 +127,7 @@ function feedGoat() {
     feedCooldown = true;
     feedButton = "feedButtonDisabled";
     setTimeout(feedButtonCooldown, (cooldown * 1000))
-    // fed.play()
+    fed.play()
     updateView();
 }
 
@@ -142,7 +142,7 @@ function playGoat() {
     playCooldown = true;
     playButton = "playButtonDisabled";
     setTimeout(playButtonCooldown, (cooldown * 1000))                   
-    // playing.play()
+    playing.play()
     updateView();
 }
 
@@ -164,9 +164,9 @@ function hungryAndSad() {
     updateView();
 }
 
-// function goatPet() {
-//     blaeShort.play();
-// }
+function goatPet() {
+    blaeShort.play();
+}
 
 function endGame() {
     feedCooldown = true;
