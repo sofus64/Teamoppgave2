@@ -8,8 +8,8 @@ let feedButton = "feedButton";
 let playButton = "playButton";
 let defeatText;
 let points = 0;
-let rukeCounter = 0;                              /*!!!!!!!!*/ 
-let rukeSpeed = 2000;                                    /*!!!!!!!!*/ 
+let rukeCounter = 0;                              /*!!!!!!!!*/
+let rukeSpeed = 2000;                                    /*!!!!!!!!*/
 const bgm = new Audio('bgm.mp3');
 bgm.volume = 0.05;
 bgm.loop = true;
@@ -48,7 +48,6 @@ function startScreen() {
         <button class=${feedButton} onclick="chooseDifficulty('10', '10', '4000', '2000')">Normal Mode</button>
         <button class=${feedButton} onclick="chooseDifficulty('15', '15', '2000', '1000')">Hard Mode</button>
         <button class=${feedButton} onclick="chooseDifficulty('15', '15', '1000', '500')">Impossible...</button>
-        <button class=${feedButton} onclick=startGame()>Start Game</button>
     </div>
     `;
 }
@@ -60,7 +59,7 @@ function updateName(goatUpdate) {
 
 function startGame() {
     timer = setInterval(hungryAndSad, speedDifficulty);
-    setTimeout(leggeTilRuke, rukeSpeed);                    /*  !!!!!!!!!!!!  setTimeout* */  
+    setTimeout(leggeTilRuke, rukeSpeed);                    /*  !!!!!!!!!!!!  setTimeout* */
     bgm.play();
     updateView();
 }
@@ -143,7 +142,7 @@ function playGoat() {
 
     playCooldown = true;
     playButton = "playButtonDisabled";
-    setTimeout(playButtonCooldown, (cooldown * 1000))                   
+    setTimeout(playButtonCooldown, (cooldown * 1000))
     playing.play()
     updateView();
 }
@@ -177,6 +176,7 @@ function endGame() {
 
     clearInterval(timer);
     clearInterval(rukeTimer);
+    document.querySelector('.bæsj').classList.add('bæsjAv');
 
     if (goatHunger <= 0) {
         defeatText = ' sultet ihjel.';
@@ -184,7 +184,6 @@ function endGame() {
         restartButton = '<button class="restartLayout" onclick="restartGame()">Restart</button>'
     }
     else {
-        goatHappiness = 0;                                        /***!!!!!!!!!!!!!!!!!* */
         defeatText = ' stakk av.'
         restartButton = '<button class="restartLayout" onclick="restartGame()">Restart</button>'
     }
@@ -236,7 +235,7 @@ function leggeTilRuke() {
         rukeListe.push(currentRuke.toString())
     }
     else {
-        endGame();
+        goatHappiness = 0;
         updateView();
     }
     rukeTimer = setTimeout(leggeTilRuke, rukeSpeed);                         /*  !!!!!!!!!!!! */
@@ -256,20 +255,23 @@ function lageRuker() {
 
 
 function fjernRuke(ruke) {
-    rukeListe.splice(ruke, 1)
-    points++;
-    rukeCounter++                                           /*!!!!!!!!*/
-    if (rukeCounter >= 4 && rukeSpeed >= 600){               /*!!!!!!!!*/           
+    if (goatHappiness > 0 && goatHunger > 0) {
+        rukeListe.splice(ruke, 1)
+        points++;
+        rukeCounter++                                           /*!!!!!!!!*/
+        if (rukeCounter >= 4 && rukeSpeed >= 600) {               /*!!!!!!!!*/
             rukeCounter = 0;                                 /*!!!!!!!!*/
             rukeSpeed -= 100;
+        }
+        lageRuker();
+        updateView();
     }
-    lageRuker();
-    updateView();
 }
 
-function chooseDifficulty(happiness, hunger, speed, rukefart){
+function chooseDifficulty(happiness, hunger, speed, rukefart) {
     happinessDifficulty = happiness;
     hungerDifficulty = hunger;
     speedDifficulty = speed;
     rukeSpeed = rukefart;
+    startGame()
 }
