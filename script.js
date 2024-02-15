@@ -159,8 +159,8 @@ function playButtonCooldown() {
 }
 
 function hungryAndSad() {
-    goatHappiness -= 10;
-    goatHunger -= 10;
+    goatHappiness -= happinessDifficulty;
+    goatHunger -= hungerDifficulty;
     updateView();
 }
 
@@ -178,12 +178,12 @@ function endGame() {
     if (goatHunger <= 0) {
         defeatText = ' sultet ihjel.';
         dead.play();                                            /***!!!!!!!!!!!!!!!!!* */
-        restartButton = '<button class="restartLayout" onclick="restartGame()">Restart</button>'
+        restartButton = '<button class="feedButton" onclick="restartGame()">Restart</button>'
     }
     else {
         goatHappiness = 0;                                        /***!!!!!!!!!!!!!!!!!* */
         defeatText = ' stakk av.'
-        restartButton = '<button class="restartLayout" onclick="restartGame()">Restart</button>'
+        restartButton = '<button class="feedButton" onclick="restartGame()">Restart</button>'
     }
 }
 
