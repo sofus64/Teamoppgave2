@@ -17,8 +17,6 @@ let backgroundMusic = true;
 let rukeListe = [];
 const rukeListeCap = 5;
 let rukeTimer;
-let happinessDifficulty = 10;
-let hungerDifficulty = 10;
 
 
 //Frode's mesterverk
@@ -40,9 +38,12 @@ function startScreen() {
     <div class="startContainer">
         <input type="text" onchange="updateName(this.value)"/>
         <button onclick=startGame()>Start Game</button>
+<<<<<<< HEAD
         <button onclick="chooseDifficulty('5', '5')">Easy Mode</button>
         <button onclick="chooseDifficulty('10', '10')">Normal Mode</button>
         <button onclick="chooseDifficulty('15', '15')">Hard Mode</button>
+=======
+>>>>>>> f06ce4311c0c8f61ea3971b54bd420a0600841dd
     </div>
     `;
 }
@@ -155,8 +156,8 @@ function playButtonCooldown() {
 }
 
 function hungryAndSad() {
-    goatHappiness -= happinessDifficulty;
-    goatHunger -= happinessDifficulty;
+    goatHappiness -= 10;
+    goatHunger -= 10;
     updateView();
 }
 
@@ -251,9 +252,4 @@ function fjernRuke(ruke) {
     points++;
     lageRuker();
     updateView();
-}
-
-function chooseDifficulty(happiness, hunger){
-    happinessDifficulty = happiness;
-    hungerDifficulty = hunger;
 }
