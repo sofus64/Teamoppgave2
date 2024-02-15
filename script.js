@@ -41,12 +41,9 @@ function startScreen() {
     <div class="nameText">Name: </div>                                                    <!--!!!!!!!!!!!-->
         <input type="text" onchange="updateName(this.value)" placeholder="Frode.."/>        <!--!!!!!!!!!!!-->
         <button onclick=startGame()>Start Game</button>
-<<<<<<< HEAD
         <button onclick="chooseDifficulty('5', '5')">Easy Mode</button>
         <button onclick="chooseDifficulty('10', '10')">Normal Mode</button>
         <button onclick="chooseDifficulty('15', '15')">Hard Mode</button>
-=======
->>>>>>> f06ce4311c0c8f61ea3971b54bd420a0600841dd
     </div>
     `;
 }
