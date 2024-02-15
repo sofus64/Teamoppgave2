@@ -8,8 +8,6 @@ let feedButton = "feedButton";
 let playButton = "playButton";
 let defeatText;
 let points = 0;
-let rukeCounter = 0;                              /*!!!!!!!!*/ 
-let rukeSpeed;                                    /*!!!!!!!!*/ 
 const bgm = new Audio('bgm.mp3');
 bgm.volume = 0.05;
 bgm.loop = true;
@@ -17,7 +15,7 @@ let timer;
 let restartButton = '';
 let backgroundMusic = true;
 let rukeListe = [];
-let rukeListeCap = 10;                             /*!!!!!!!!*/
+const rukeListeCap = 5;
 let rukeTimer;
 
 //peakaboo
@@ -38,8 +36,7 @@ function startScreen() {
         <img src="img/8-28-goat.jpg"/>
     </div>
     <div class="startContainer">
-    <div class="nameText">Name: </div>                                                    <!--!!!!!!!!!!!-->
-    <input type="text" onchange="updateName(this.value)" placeholder="Frode.."/>        <!--!!!!!!!!!!!-->
+        <input type="text" onchange="updateName(this.value)"/>
         <button onclick=startGame()>Start Game</button>
     </div>
     `;
@@ -52,7 +49,7 @@ function updateName(goatUpdate) {
 
 function startGame() {
     timer = setInterval(hungryAndSad, 4000);
-    setTimeout(leggeTilRuke, rukeSpeed);                    /*  !!!!!!!!!!!!  setTimeout* */  
+    rukeTimer = setInterval(leggeTilRuke, 2000);
     bgm.play();
     updateView();
 }
@@ -171,11 +168,10 @@ function endGame() {
 
     if (goatHunger <= 0) {
         defeatText = ' sultet ihjel.';
-        dead.play();                                            /***!!!!!!!!!!!!!!!!!* */
+
         restartButton = '<button class="restartLayout" onclick="restartGame()">Restart</button>'
     }
     else {
-        goatHappiness = 0;                                        /***!!!!!!!!!!!!!!!!!* */
         defeatText = ' stakk av.'
         restartButton = '<button class="restartLayout" onclick="restartGame()">Restart</button>'
     }
@@ -230,7 +226,6 @@ function leggeTilRuke() {
         endGame();
         updateView();
     }
-    setTimeout(leggeTilRuke, rukeSpeed);                         /*  !!!!!!!!!!!! */
     lageRuker();
     updateView();
 }
@@ -249,11 +244,6 @@ function lageRuker() {
 function fjernRuke(ruke) {
     rukeListe.splice(ruke, 1)
     points++;
-    rukeCounter++                                           /*!!!!!!!!*/
-    if (rukeCounter >= 4 && rukeSpeed >= 600){               /*!!!!!!!!*/           
-            rukeCounter = 0;                                 /*!!!!!!!!*/
-            rukeSpeed -= 100;
-    }
     lageRuker();
     updateView();
 }
