@@ -74,7 +74,7 @@ function updateView() {
     document.getElementById('app').innerHTML = /*HTML*/ `
      <div id="points">Points: ${points}</div>
      <div class="rukeDiv"></div>
-    <button class="muteLayout" onclick="muteSound()">Mute</button>
+    <button class=${feedButton} onclick="muteSound()">Mute</button>
     <div class="bars">
         <div class="venstreBar">
             <div class="svolten">
