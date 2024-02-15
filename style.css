@@ -1,0 +1,175 @@
+html {
+    background-image: url("img/background.png");
+    background-repeat: repeat-x;
+    background-size: contain;
+    font-family: "Indie Flower", sans-serif;
+}
+
+
+.bars {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 50px;
+    
+}
+
+.hungerBarFull {
+    background: linear-gradient(90deg, rgb(17, 121, 7) 0%, rgb(0, 243, 93) 100%);
+    
+    width: 0%;
+    height: 60px;
+}
+
+.playBarFull {
+    background: linear-gradient(90deg, rgb(17, 121, 7) 0%, rgb(0, 243, 93) 100%);
+    
+    width: 0%;
+    height: 60px;
+}
+
+
+.hungerBar, .playBar {
+    width: 300px;
+    height: 60px;
+    background: linear-gradient(90deg, rgb(180, 36, 7) 0%, rgb(245, 121, 121)100%);
+    border: 2px solid black;
+    box-shadow: 2px 2px 2px black;
+    margin-top: 10px;
+}
+
+.goat {
+    margin-top: 150px;
+    justify-content: center;
+    text-align: center;
+    height: 300px;
+}
+
+.goatImg {
+    width: 300px;
+    height: 300px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-around;
+    align-items: end;
+}
+
+.feedButton, .playButton  {
+    width: 140px;
+    height: 80px;
+    background: linear-gradient(162deg, rgba(221,175,74,1) 0%, rgba(185,84,7,1) 100%);
+    box-shadow: 3px 3px 3px black;
+    border-radius: 30%;
+    font-size: 30px;
+    font-family: "Indie Flower", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.feedButton:active, .playButton:active {
+    background: linear-gradient(162deg, rgb(226, 194, 124) 0%, rgb(189, 104, 39)100%);
+    box-shadow: 6px 6px 6px black;
+    border-radius: 30%;
+    
+}
+
+.feedButton:hover, .playButton:hover {
+    background: linear-gradient(162deg, rgba(221,175,74,1) 0%, rgba(185,84,7,1) 100%);
+    box-shadow: 5px 5px 5px black;
+    border-radius: 30%;
+    transform: scale(1.05);
+}
+
+
+.feedButtonDisabled, .playButtonDisabled {
+    width: 140px;
+    height: 80px;
+    background: linear-gradient(162deg, rgb(175, 137, 53) 0%,rgb(138, 77, 30));
+    box-shadow: 3px 3px 3px black;
+    border-radius: 30%;
+    font-size: 30px;
+    font-family: "Indie Flower", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.goatName {
+    font-size: 40px;
+    color: white;
+    
+}
+
+.svolten, .glad {
+    display: flex;
+    border: 2px solid black;
+    box-shadow: 3px 3px 3px black;
+    background-color: red;
+    height: 80px;
+    width: 80px;
+    margin: 0 20px;
+    justify-content: center;
+    align-items: center;   
+    border-radius: 50%; 
+}
+
+.høgreBar, .venstreBar {
+    display: flex;
+}
+
+.startContainer {
+    display: flex;
+    justify-content: center;
+    margin: 50px;
+}
+
+
+.startImage {
+    display: flex;
+    justify-content: center;
+}
+
+.startContainer > input {
+    height: 80px;
+    margin: 10px;
+    font-size: 30px;
+    font-family: "Indie Flower", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.startContainer > button {
+    height: 80px;
+    margin: 10px;
+}
+
+.bæsj {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+}
+
+.muteLayout {
+    position: absolute;
+    left: 50px;
+    right: 50px;
+    width: 50px;
+    height: 50px;
+}
+
+.restartLayout {
+    position: absolute;
+    left: 50px;
+    top: 10%;
+    width: 50px;
+    height: 50px;
+    margin-top: 20px;
+}
+
+.rukeDiv {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
