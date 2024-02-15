@@ -43,9 +43,10 @@ function startScreen() {
     <div class="startContainer">
     <div class="nameText">Name: </div>                                                    <!--!!!!!!!!!!!-->
         <input type="text" onchange="updateName(this.value)" placeholder="Frode.."/>        <!--!!!!!!!!!!!-->
-        <button class=${feedButton} onclick="chooseDifficulty('5', '5', '6000', '3000')">Easy Mode</button>
+        <button class=${feedButton} onclick="chooseDifficulty('5', '5','6000', '3000')">Easy Mode</button>
         <button class=${feedButton} onclick="chooseDifficulty('10', '10', '4000', '2000')">Normal Mode</button>
         <button class=${feedButton} onclick="chooseDifficulty('15', '15', '2000', '1000')">Hard Mode</button>
+        <button class=${feedButton} onclick="chooseDifficulty('15', '15', '1000', '500')">Impossible...</button>
         <button class=${feedButton} onclick=startGame()>Start Game</button>
     </div>
     `;
@@ -127,7 +128,7 @@ function feedGoat() {
     feedCooldown = true;
     feedButton = "feedButtonDisabled";
     setTimeout(feedButtonCooldown, (cooldown * 1000))
-    // fed.play()
+    fed.play()
     updateView();
 }
 
@@ -142,7 +143,7 @@ function playGoat() {
     playCooldown = true;
     playButton = "playButtonDisabled";
     setTimeout(playButtonCooldown, (cooldown * 1000))                   
-    // playing.play()
+    playing.play()
     updateView();
 }
 
@@ -164,9 +165,9 @@ function hungryAndSad() {
     updateView();
 }
 
-// function goatPet() {
-//     blaeShort.play();
-// }
+function goatPet() {
+    blaeShort.play();
+}
 
 function endGame() {
     feedCooldown = true;
@@ -178,12 +179,12 @@ function endGame() {
     if (goatHunger <= 0) {
         defeatText = ' sultet ihjel.';
         dead.play();                                            /***!!!!!!!!!!!!!!!!!* */
-        restartButton = '<button class="feedButton" onclick="restartGame()">Restart</button>'
+        restartButton = '<button class="restartLayout" onclick="restartGame()">Restart</button>'
     }
     else {
         goatHappiness = 0;                                        /***!!!!!!!!!!!!!!!!!* */
         defeatText = ' stakk av.'
-        restartButton = '<button class="feedButton" onclick="restartGame()">Restart</button>'
+        restartButton = '<button class="restartLayout" onclick="restartGame()">Restart</button>'
     }
 }
 
