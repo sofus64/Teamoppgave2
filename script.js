@@ -23,6 +23,7 @@ let happinessDifficulty = 10;
 let hungerDifficulty = 10;
 
 
+
 //Frode's mesterverk
 const dead = new Audio('lyder/drept.mp3')
 const fed = new Audio('lyder/godtmedmat.mp3')
@@ -174,6 +175,7 @@ function endGame() {
     bgm.volume = 0.0;
 
     clearInterval(timer);
+    clearInterval(rukeTimer);
 
     if (goatHunger <= 0) {
         defeatText = ' sultet ihjel.';
@@ -236,7 +238,7 @@ function leggeTilRuke() {
         endGame();
         updateView();
     }
-    setTimeout(leggeTilRuke, rukeSpeed);                         /*  !!!!!!!!!!!! */
+    rukeTimer = setTimeout(leggeTilRuke, rukeSpeed);                         /*  !!!!!!!!!!!! */
     lageRuker();
     updateView();
 }
