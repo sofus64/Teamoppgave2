@@ -40,9 +40,9 @@ function startScreen() {
     <div class="startContainer">
         <input type="text" onchange="updateName(this.value)"/>
         <button onclick=startGame()>Start Game</button>
-        <button onclick=chooseDifficulty('5', '5')>Easy Mode</button>
-        <button onclick=chooseDifficulty('10', '10')>Normal Mode</button>
-        <button onclick=chooseDifficulty('15', '15')>Hard Mode</button>
+        <button onclick="chooseDifficulty('5', '5')">Easy Mode</button>
+        <button onclick="chooseDifficulty('10', '10')">Normal Mode</button>
+        <button onclick="chooseDifficulty('15', '15')">Hard Mode</button>
     </div>
     `;
 }
