@@ -19,6 +19,8 @@ let backgroundMusic = true;
 let rukeListe = [];
 let rukeListeCap = 10;                             /*!!!!!!!!*/
 let rukeTimer;
+let happinessDifficulty = 10;
+let hungerDifficulty = 10;
 
 
 //Frode's mesterverk
@@ -260,4 +262,9 @@ function fjernRuke(ruke) {
     }
     lageRuker();
     updateView();
+}
+
+function chooseDifficulty(happiness, hunger){
+    happinessDifficulty = happiness;
+    hungerDifficulty = hunger;
 }
