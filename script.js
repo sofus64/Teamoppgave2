@@ -92,7 +92,7 @@ function updateView() {
                 </div>
             </div>
             <div class="glad">
-                <img src="/img/m00ds.png" />
+                <img src="img/mood.png" />
             </div>
         </div>
         </div>
