@@ -18,7 +18,7 @@ let rukeListe = [];
 const rukeListeCap = 5;
 let rukeTimer;
 
-
+//peakaboo
 //Frode's mesterverk
 const dead = new Audio('lyder/drept.mp3')
 const fed = new Audio('lyder/godtmedmat.mp3')
