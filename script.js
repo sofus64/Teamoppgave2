@@ -19,8 +19,10 @@ let backgroundMusic = true;
 let rukeListe = [];
 let rukeListeCap = 10;                             /*!!!!!!!!*/
 let rukeTimer;
+let happinessDifficulty = 10;
+let hungerDifficulty = 10;
 
-//peakaboo
+
 //Frode's mesterverk
 const dead = new Audio('lyder/drept.mp3')
 const fed = new Audio('lyder/godtmedmat.mp3')
@@ -41,6 +43,9 @@ function startScreen() {
     <div class="nameText">Name: </div>                                                    <!--!!!!!!!!!!!-->
     <input type="text" onchange="updateName(this.value)" placeholder="Frode.."/>        <!--!!!!!!!!!!!-->
         <button onclick=startGame()>Start Game</button>
+        <button onclick=chooseDifficulty('5', '5')>Easy Mode</button>
+        <button onclick=chooseDifficulty('10', '10')>Normal Mode</button>
+        <button onclick=chooseDifficulty('15', '15')>Hard Mode</button>
     </div>
     `;
 }
@@ -153,8 +158,8 @@ function playButtonCooldown() {
 }
 
 function hungryAndSad() {
-    goatHappiness -= 10;
-    goatHunger -= 10;
+    goatHappiness -= happinessDifficulty;
+    goatHunger -= happinessDifficulty;
     updateView();
 }
 
@@ -256,4 +261,9 @@ function fjernRuke(ruke) {
     }
     lageRuker();
     updateView();
+}
+
+function chooseDifficulty(happiness, hunger){
+    happinessDifficulty = happiness;
+    hungerDifficulty = hunger;
 }
