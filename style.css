@@ -97,7 +97,7 @@ html {
 .goatName {
     font-size: 40px;
     color: white;
-    
+    user-select: none;             /*!!!!!!!!!!!*/
 }
 
 .svolten, .glad {
@@ -147,6 +147,7 @@ html {
     position: absolute;
     width: 100px;
     height: 100px;
+    user-select: none;          /*!!!!!!*/
 }
 
 .muteLayout {
@@ -168,8 +169,15 @@ html {
 
 .rukeDiv {
     position: absolute;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
+    width: 80%;        /* !!!! */
+    height: 62%;        /* !!!! */
+    margin-left: 200px;
+    border: 5px solid black;   /*!!!!!!!*/
 }
 
+.nameText{           /*!!!!!!!*/
+
+font-size: 200%;     /*!!!!!!!*/
+font-weight: 900;   /*!!!!!!!*/
+
+}                    /*!!!!!!!*/
