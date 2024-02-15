@@ -42,10 +42,10 @@ function startScreen() {
     <div class="startContainer">
     <div class="nameText">Name: </div>                                                    <!--!!!!!!!!!!!-->
         <input type="text" onchange="updateName(this.value)" placeholder="Frode.."/>        <!--!!!!!!!!!!!-->
-        <button onclick=startGame()>Start Game</button>
-        <button onclick="chooseDifficulty('5', '5')">Easy Mode</button>
-        <button onclick="chooseDifficulty('10', '10')">Normal Mode</button>
-        <button onclick="chooseDifficulty('15', '15')">Hard Mode</button>
+        <button class=${feedButton} onclick="chooseDifficulty('5', '5')">Easy Mode</button>
+        <button class=${feedButton} onclick="chooseDifficulty('10', '10')">Normal Mode</button>
+        <button class=${feedButton} onclick="chooseDifficulty('15', '15')">Hard Mode</button>
+        <button class=${feedButton} onclick=startGame()>Start Game</button>
     </div>
     `;
 }
