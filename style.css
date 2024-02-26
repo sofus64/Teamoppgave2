@@ -3,6 +3,11 @@ html {
     background-repeat: repeat-x;
     background-size: contain;
     font-family: "Indie Flower", sans-serif;
+    user-select: none;
+}
+
+img {
+    -webkit-user-drag: none;
 }
 
 
@@ -179,3 +184,7 @@ font-size: 200%;     /*!!!!!!!*/
 font-weight: 900;   /*!!!!!!!*/
 
 }                    /*!!!!!!!*/
+
+.bæsjAv{
+    pointer-events: none;
+}
