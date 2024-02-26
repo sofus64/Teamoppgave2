@@ -46,31 +46,19 @@ function startScreen() {
     <div class="startContainer">
     <div style="font-size: 200%">Objektiv: hold geita matet, lekt med og fri for ruker til tiden går ut</div>
     <div class="nameText">Name: </div>                                                    <!--!!!!!!!!!!!-->
-<<<<<<< HEAD
         <input type="text" onchange="goatName = this.value" placeholder="Frode.."/>        <!--!!!!!!!!!!!-->
         <button class=${feedButton} onclick="chooseDifficulty('5', '5','6000', '3000'); startGame()">Easy Mode</button>
         <button class=${feedButton} onclick="chooseDifficulty('10', '10', '4000', '2000'); startGame()">Normal Mode</button>
         <button class=${feedButton} onclick="chooseDifficulty('15', '15', '2000', '1000'); startGame()">Hard Mode</button>
         <button class=${feedButton} onclick="chooseDifficulty('15', '15', '1000', '500'); startGame()">Impossible...</button>
-=======
-        <input type="text" onchange="updateName(this.value)" placeholder="Frode.."/>        <!--!!!!!!!!!!!-->
-        <button class=${feedButton} onclick="chooseDifficulty('5', '5','6000', '3000')">Easy Mode</button>
-        <button class=${feedButton} onclick="chooseDifficulty('10', '10', '4000', '2000')">Normal Mode</button>
-        <button class=${feedButton} onclick="chooseDifficulty('15', '15', '2000', '1000')">Hard Mode</button>
-        <button class=${feedButton} onclick="chooseDifficulty('15', '15', '1000', '500')">Impossible...</button>
->>>>>>> 1b7f04b3451b42d240d56f6cbf2db91203d76bf6
     </div>
     `;
 }
 
 function startGame() {
     timer = setInterval(hungryAndSad, speedDifficulty);
-<<<<<<< HEAD
     victorytimer = setInterval(victorytime, 1000);
     rukeTimer = setInterval(leggeTilRuke, rukeSpeed);                    /*  !!!!!!!!!!!!  setTimeout* */  
-=======
-    setTimeout(leggeTilRuke, rukeSpeed);                    /*  !!!!!!!!!!!!  setTimeout* */
->>>>>>> 1b7f04b3451b42d240d56f6cbf2db91203d76bf6
     bgm.play();
     updateView();
 }
@@ -195,17 +183,12 @@ function endGame() {
     clearInterval(victorytimer)
     clearInterval(timer);
     clearInterval(rukeTimer);
-<<<<<<< HEAD
-=======
-    document.querySelector('.bæsj').classList.add('bæsjAv');
->>>>>>> 1b7f04b3451b42d240d56f6cbf2db91203d76bf6
 
     if (goatHunger <= 0) {
         resultText = ' sultet ihjel.';
         dead.play();                                            /***!!!!!!!!!!!!!!!!!* */
         restartButton = '<button class="restartLayout" onclick="restartGame()">Restart</button>'
     }
-<<<<<<< HEAD
     else if (goatHappiness <= 0) {
         goatHappiness = 0;                                        /***!!!!!!!!!!!!!!!!!* */
         resultText = 'stakk av.'
@@ -213,11 +196,6 @@ function endGame() {
     } else {
         resultText = 'Du vant!'
         restartButton = `<button class="feedButton" onclick="restartGame()">Restart</button>`
-=======
-    else {
-        defeatText = ' stakk av.'
-        restartButton = '<button class="restartLayout" onclick="restartGame()">Restart</button>'
->>>>>>> 1b7f04b3451b42d240d56f6cbf2db91203d76bf6
     }
 }
 
@@ -269,12 +247,7 @@ function leggeTilRuke() {
     else {
         goatHappiness = 0;
         updateView();
-<<<<<<< HEAD
     }                         /*  !!!!!!!!!!!! */
-=======
-    }
-    rukeTimer = setTimeout(leggeTilRuke, rukeSpeed);                         /*  !!!!!!!!!!!! */
->>>>>>> 1b7f04b3451b42d240d56f6cbf2db91203d76bf6
     lageRuker();
     updateView();
 }
