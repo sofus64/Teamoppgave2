@@ -43,14 +43,15 @@ function startScreen() {
     <div class=startImage>
         <img src="img/8-28-goat.jpg"/>
     </div>
-    <div class="startContainer">
+    <div class="
+    ">
     <div style="font-size: 200%">Objektiv: hold geita matet, lekt med og fri for ruker til tiden går ut</div>
     <div class="nameText">Name: </div>                                                    <!--!!!!!!!!!!!-->
         <input type="text" onchange="goatName = this.value" placeholder="Frode.."/>        <!--!!!!!!!!!!!-->
-        <button class=${feedButton} onclick="chooseDifficulty('5', '5','6000', '3000'); startGame()">Easy Mode</button>
-        <button class=${feedButton} onclick="chooseDifficulty('10', '10', '4000', '2000'); startGame()">Normal Mode</button>
-        <button class=${feedButton} onclick="chooseDifficulty('15', '15', '2000', '1000'); startGame()">Hard Mode</button>
-        <button class=${feedButton} onclick="chooseDifficulty('15', '15', '1000', '500'); startGame()">Impossible...</button>
+        <button class=${feedButton} onclick="chooseDifficulty('5', '5','6000', '3000')">Easy Mode</button>
+        <button class=${feedButton} onclick="chooseDifficulty('10', '10', '4000', '2000')">Normal Mode</button>
+        <button class=${feedButton} onclick="chooseDifficulty('15', '15', '2000', '1000')">Hard Mode</button>
+        <button class=${feedButton} onclick="chooseDifficulty('15', '15', '1000', '500')">Impossible...</button>
     </div>
     `;
 }
@@ -71,58 +72,55 @@ function victorytime(){
 
 function updateView() {
 
-    if (goatHunger <= 0 || goatHappiness <= 0) {
-        endGame()
-    } if (victory <= 0){
-        clearInterval(rukeTimer)
-        endGame()
-    }
-
+    
     document.getElementById('app').innerHTML = /*HTML*/ `
-     <div id="points">Points: ${points}</div>
-     <div id="points">Time remaining: ${victory}</div>
-     <div class="rukeDiv"></div>
+    <div id="points">Points: ${points}</div>
+    <div id="points">Time remaining: ${victory}</div>
+    <div class="rukeDiv"></div>
     <button class=${feedButton} onclick="muteSound()">Mute</button>
     <div class="bars">
     ${restartButton}
-        <div class="venstreBar">
-            <div class="svolten">
-                <img src="img/Burger.png"/>
-            </div>
-            <div class="hungerBar">
-                <div class="hungerBarFull" style="width: ${goatHunger}%">
-                </div>
-        </div>
-        </div>
-        <div class="høgreBar">
-            
-            <div class="playBar">
-                <div class="playBarFull" style="width: ${goatHappiness}%">
-                </div>
-            </div>
-            <div class="glad">
-                <img src="img/mood.png" />
-            </div>
-        </div>
-        </div>
-        <div class="goat">
-        
-        <h1 class="goatName">${goatName ?? "Frode"} ${resultText ?? ""}</h1>
-        <img onclick="goatPet()" class="goatImg" src="${changePicture()}" />
-        </div>
-    <div class="buttons">
-        <button class=${feedButton} onclick="feedGoat()" ${feedCooldown ? 'disabled' : ''}>
-            Feed
-        </button>
-        <button class=${playButton} onclick="playGoat()" ${playCooldown ? 'disabled' : ''}>
-            Play
-        </button>
+    <div class="venstreBar">
+    <div class="svolten">
+    <img src="img/Burger.png"/>
     </div>
+    <div class="hungerBar">
+    <div class="hungerBarFull" style="width: ${goatHunger}%">
+    </div>
+    </div>
+    </div>
+    <div class="høgreBar">
     
-                 
-     `;
-
+    <div class="playBar">
+    <div class="playBarFull" style="width: ${goatHappiness}%">
+    </div>
+    </div>
+    <div class="glad">
+    <img src="img/mood.png" />
+    </div>
+    </div>
+    </div>
+    <div class="goat">
+    
+    <h1 class="goatName">${goatName ?? "Frode"} ${resultText ?? ""}</h1>
+    <img onclick="goatPet()" class="goatImg" src="${changePicture()}" />
+    </div>
+    <div class="buttons">
+    <button class=${feedButton} onclick="feedGoat()" ${feedCooldown ? 'disabled' : ''}>
+    Feed
+    </button>
+    <button class=${playButton} onclick="playGoat()" ${playCooldown ? 'disabled' : ''}>
+    Play
+    </button>
+    </div>
+    `;
+    
     lageRuker();
+    if (goatHunger <= 0 || goatHappiness <= 0) {
+        endGame()
+    } if (victory <= 0){
+        endGame()
+    }
 }
 
 function feedGoat() {
@@ -180,14 +178,15 @@ function endGame() {
     feedCooldown = true;
     playCooldown = true;
     bgm.volume = 0.0;
-    clearInterval(victorytimer)
+    clearInterval(victorytimer);
     clearInterval(timer);
     clearInterval(rukeTimer);
+    
 
     if (goatHunger <= 0) {
         resultText = ' sultet ihjel.';
         dead.play();                                            /***!!!!!!!!!!!!!!!!!* */
-        restartButton = '<button class="restartLayout" onclick="restartGame()">Restart</button>'
+        restartButton = '<button class="feedButton" onclick="restartGame()">Restart</button>'
     }
     else if (goatHappiness <= 0) {
         goatHappiness = 0;                                        /***!!!!!!!!!!!!!!!!!* */
@@ -197,6 +196,7 @@ function endGame() {
         resultText = 'Du vant!'
         restartButton = `<button class="feedButton" onclick="restartGame()">Restart</button>`
     }
+    updateView()
 }
 
 function restartGame() {
